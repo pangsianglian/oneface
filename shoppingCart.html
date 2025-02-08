@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+		<a href="https://www.facebook.com/media/set/?set=a.473515801445751&type=3" target="_blank">
+        <img src="onefacelogo.png" alt="Company Logo" id="logo">
+		</a>
+    </header>
+    
+    <div class="cart-container">
+        <h1>Your Shopping Cart</h1>
+
+        <table id="cart">
+            <thead>
+                <tr>
+                    <th>Product Image</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="cart-item">
+                    <td><img src="BV_SPF40.jpg" alt="Product 1" class="product-image"></td>
+                    <td>BV Everyday Protection SPF40</td>
+                    <td><input type="number" value="1" class="quantity"></td>
+                    <td class="price">$100.00</td>
+                    <td><button class="remove-btn">Remove</button></td>
+                </tr>
+				
+				<tr class="cart-item">
+                    <td><img src="BV_CleaningGel.jpg" alt="Product 2" class="product-image"></td>
+                    <td>BV Cleaning Gel</td>
+                    <td><input type="number" value="1" class="quantity"></td>
+                    <td class="price">$68.00</td>
+                    <td><button class="remove-btn">Remove</button></td>
+                </tr>
+				
+				<tr class="cart-item">
+                    <td><img src="doTERRA_PastTense.jpg" alt="Product 3" class="product-image"></td>
+                    <td>doTERRA Past Tense</td>
+                    <td><input type="number" value="1" class="quantity"></td>
+                    <td class="price">$68.00</td>
+                    <td><button class="remove-btn">Remove</button></td>
+                </tr>
+                <!-- More products can be added here -->
+            </tbody>
+        </table>
+
+        <div class="summary">
+            <h2>Total Payment: <span id="total">0</span></h2>
+            <button id="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
