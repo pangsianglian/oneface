@@ -1,37 +1,45 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const cart = document.getElementById('cart');
     const totalElement = document.getElementById('total');
-    const removeButtons = document.querySelectorAll('.remove-btn');
-    const addToCartButton = document.getElementById('add-to-cart');
-    let totalAmount = 0;
+	const addToCartButton = document.getElementById('add-to-cart');
 
-    // Function to calculate the total price
     function calculateTotal() {
-        totalAmount = 0;
-        const rows = cart.querySelectorAll('tbody tr');
-        rows.forEach(row => {
-            const quantity = row.querySelector('.quantity').value;
+        let totalAmount = 0;
+        const cartItems = document.querySelectorAll('.cart-item');
+
+        cartItems.forEach(row => {
+            const quantityInput = row.querySelector('.quantity');
             const price = parseFloat(row.querySelector('.price').textContent.replace('$', ''));
-            totalAmount += price * quantity;
+            const quantity = parseInt(quantityInput.value);
+            
+            const itemTotal = price * quantity;
+            totalAmount += itemTotal;
         });
+
         totalElement.textContent = `$${totalAmount.toFixed(2)}`;
     }
 
-    // Add event listeners to "remove" buttons
-    removeButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            const row = e.target.closest('tr');
-            row.remove();
+    // Listen for quantity changes
+    cart.addEventListener('input', function (event) {
+        if (event.target.classList.contains('quantity')) {
             calculateTotal();
-        });
+        }
     });
 
-    // Example event listener for "Add to Cart" button
-    addToCartButton.addEventListener('click', function() {
-        alert('Product added to cart');
-        // Implement actual cart logic here
+    // Remove item from cart
+    cart.addEventListener('click', function (event) {
+        if (event.target.classList.contains('remove-btn')) {
+            event.target.closest('tr').remove();
+            calculateTotal();
+        }
+	});
+	   // Add to cart button alert
+    addToCartButton.addEventListener('click', function () {
+        const totalAmount = totalElement.textContent;
+        alert(`Total Payment ${totalAmount} has been added to cart. Thank you.`);
     });
+    
 
-    // Call calculateTotal initially
+    // Initial total calculation
     calculateTotal();
 });
